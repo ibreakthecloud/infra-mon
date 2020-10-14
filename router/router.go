@@ -2,12 +2,16 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-
+	"github.com/ibreakthecloud/infra-mon/controller/metrics"
 )
 // Endpoints constants
 const(
 	Metrics = "metrics"
 	Report = "report"
+)
+
+var(
+	metricsController = metrics.New()
 )
 
 func New() *gin.Engine {
@@ -19,13 +23,10 @@ func New() *gin.Engine {
 	return router
 }
 
+// registerAllEndpoints registers all of the endpoints supported by the server
 func registerAllEndpoints(r *gin.Engine) {
 
-	// Simple ping-pong router to check sanity of server
 	addPingRoutes(r)
-	// Adds metrics route that supports to ingest logs
 	addMetricsRoute(r)
-	// Adds report route that generates report with stats like
-	// highest CPU and highest memory usage
 	addReportRoute(r)
 }

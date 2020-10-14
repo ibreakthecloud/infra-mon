@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Simple ping-pong router to check sanity of server
 func addPingRoutes(r *gin.Engine) {
 	ping := r.Group("ping")
 
@@ -13,14 +14,15 @@ func addPingRoutes(r *gin.Engine) {
 	})
 }
 
+// addMetricsRoute that supports to ingest logs
 func addMetricsRoute(r *gin.Engine) {
 	metrics := r.Group("/metrics")
 
-	metrics.POST("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "add metrics handler")
-	})
+	metrics.POST("/", metricsController.StoreMetrics)
 }
 
+// addReportRoute that generates report with stats like
+// highest CPU and highest memory usage
 func addReportRoute(r *gin.Engine) {
 	report := r.Group("/report")
 
