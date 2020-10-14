@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/ibreakthecloud/infra-mon/pkg/store"
 	"github.com/ibreakthecloud/infra-mon/router"
-	"github.com/ibreakthecloud/infra-mon/store"
 	"github.com/sirupsen/logrus"
 )
 

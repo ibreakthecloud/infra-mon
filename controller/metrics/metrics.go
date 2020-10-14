@@ -2,7 +2,7 @@ package metrics
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ibreakthecloud/infra-mon/store"
+	"github.com/ibreakthecloud/infra-mon/pkg/store"
 	"net/http"
 )
 

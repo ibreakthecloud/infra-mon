@@ -2,7 +2,7 @@ package report
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ibreakthecloud/infra-mon/store"
+	"github.com/ibreakthecloud/infra-mon/pkg/store"
 )
 // New creates new report object
 func New() *Report{
