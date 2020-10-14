@@ -3,7 +3,9 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/ibreakthecloud/infra-mon/controller/metrics"
+	"github.com/ibreakthecloud/infra-mon/controller/report"
 )
+
 // Endpoints constants
 const(
 	Metrics = "metrics"
@@ -12,6 +14,7 @@ const(
 
 var(
 	metricsController = metrics.New()
+	reportController = report.New()
 )
 
 func New() *gin.Engine {
@@ -26,6 +29,7 @@ func New() *gin.Engine {
 // registerAllEndpoints registers all of the endpoints supported by the server
 func registerAllEndpoints(r *gin.Engine) {
 
+	// registers the below endpoints
 	addPingRoutes(r)
 	addMetricsRoute(r)
 	addReportRoute(r)

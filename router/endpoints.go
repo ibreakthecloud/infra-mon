@@ -16,7 +16,7 @@ func addPingRoutes(r *gin.Engine) {
 
 // addMetricsRoute that supports to ingest logs
 func addMetricsRoute(r *gin.Engine) {
-	metrics := r.Group("/metrics")
+	metrics := r.Group(Metrics)
 
 	metrics.POST("/", metricsController.StoreMetrics)
 }
@@ -24,9 +24,7 @@ func addMetricsRoute(r *gin.Engine) {
 // addReportRoute that generates report with stats like
 // highest CPU and highest memory usage
 func addReportRoute(r *gin.Engine) {
-	report := r.Group("/report")
+	report := r.Group(Report)
 
-	report.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "add report handler")
-	})
+	report.GET("/", reportController.GenerateReport)
 }
