@@ -10,6 +10,6 @@ func New() *Report{
 }
 
 func (r *Report) GenerateReport (c *gin.Context) {
-	report := store.DataStore.GetUniqueMaximum()
+	report := store.NewStore.Get()
 	c.JSON(200, report)
 }

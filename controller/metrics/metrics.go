@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// New instantiates a new empty Metrics object
 func New() *Metrics {
 	return &Metrics{}
 }
@@ -24,6 +25,7 @@ func (m *Metrics) StoreMetrics (c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Invalid memory usage percentage",
 		})
+		return
 	}
 
 	// validate CPUPercentage
@@ -31,16 +33,20 @@ func (m *Metrics) StoreMetrics (c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Invalid CPU usage percentage",
 		})
+		return
 	}
 
-	// add data to metrics store
-	store.DataStore.Add(c.ClientIP(), m.CPUPercentage, m.MemoryPercentage)
+	// add new metrics to store
+	store.NewStore.Create(c.ClientIP(), m.CPUPercentage, m.MemoryPercentage)
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Metric Ingested Successfully",
 	})
+	return
 }
 
+// isPercent validates if the provided integer is a valid percentage
+// i.e. <between 0-100>
 func isPercent(p int) bool {
 	if p >= 0 && p <= 100 {
 		return true

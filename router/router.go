@@ -17,6 +17,7 @@ var(
 	reportController = report.New()
 )
 
+// New instantiates a new gin router to handle API requests
 func New() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
