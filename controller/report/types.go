@@ -1,3 +1,3 @@
 package report
 
-type Report struct {}
+type Report struct{}

@@ -22,8 +22,8 @@ func main() {
 	r := router.New()
 
 	// initialize the data store
-	store.NewStore =  inmemory.New()
+	store.NewStore = inmemory.New()
 
 	logrus.Info("LISTENING ON PORT: ", port)
-	logrus.Fatal(r.Run(":"+port))
+	logrus.Fatal(r.Run(":" + port))
 }

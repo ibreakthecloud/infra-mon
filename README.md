@@ -11,7 +11,10 @@ It exposes two endpoints
     - **methods:** `GET`
     
 ## Usage
-By default this server serves on port `8080`. 
+By default, this server serves on port `8080`, but can be configured on the basis of environment variable `PORT`.
+
+Running `make` will automatically generate a Docker image. Dockerfile is multi-staged build and exposes the server at port `8080`
+
 
 ### Ingestion
 
@@ -42,9 +45,21 @@ By default this server serves on port `8080`.
 [
     {
         "ip": "10.20.30.40",
-        "max_cpu": 95,
+        "max_cpu": 65,
         "max_memory": 85
     },
-    ...
+    {
+        "ip": "49.37.83.70",
+        "max_cpu": 71,
+        "max_memory": 90
+    }
 ]
+```
+
+## Development
+
+Running the below command will start the local server at port `8080`
+
+```go
+go run main.go
 ```

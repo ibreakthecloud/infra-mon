@@ -8,7 +8,7 @@ type MaxReport struct {
 	MaxMemory int    `json:"max_memory"`
 }
 
-type Store interface{
+type Store interface {
 	Create(ip string, cpuUsed int, memUsed int)
 	Get() []MaxReport
 }

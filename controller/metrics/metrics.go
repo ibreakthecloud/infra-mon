@@ -11,12 +11,12 @@ func New() *Metrics {
 	return &Metrics{}
 }
 
-func (m *Metrics) StoreMetrics (c *gin.Context) {
+func (m *Metrics) StoreMetrics(c *gin.Context) {
 
 	// verify if request payload is valid
 	err := c.BindJSON(m)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"unable to parse request payload"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "unable to parse request payload"})
 		return
 	}
 

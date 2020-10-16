@@ -48,7 +48,7 @@ func generateClientMaximumReport(i *InMemory) []store.MaxReport {
 			}
 		}
 		outputMetrics.IP = ip
-		
+
 		max = append(max, *outputMetrics)
 		// make it empty
 		outputMetrics = &store.MaxReport{}
